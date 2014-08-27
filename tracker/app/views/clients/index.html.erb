@@ -2,4 +2,13 @@
 
  <% flash.each do |name,msg| %>
     <%= msg %></br>
-  <% end %>
+ <% end %>
+
+<ul>
+	<% @clients.each do |client| %>
+		<li>
+			<%=link_to "#{client.first_name} #{client.last_name} #{client.email} #{client.company_name}" , client%>
+		</li>
+	<%end%>
+</ul>
+
