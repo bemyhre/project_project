@@ -15,7 +15,8 @@ class ClientsController < ApplicationController
 
   def show
     @client = Client.find(params[:id])
-  end
+    @projects=Project.all
+  end 
 
   def edit
     @client = Client.find(params[:id])
