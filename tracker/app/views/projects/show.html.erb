@@ -1,0 +1,7 @@
+<h2><%="PROJECT: #{@project.name}"%></h2>
+
+<p><%=@project.description%><p>
+
+<%= link_to 'Back', clients_path %>
+<%= link_to ' Client Details', @client, :action => 'show'%>
+<%= link_to ' Edit Project', [@client, @project], :action => 'edit'%>

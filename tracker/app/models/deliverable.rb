@@ -1,4 +1,4 @@
 class Deliverable < ActiveRecord::Base
-	has_one :project
+	belongs_to :project
 	has_many :issues
 end

@@ -1,3 +1,3 @@
 class Issue < ActiveRecord::Base
-	has_one :deliverable
+	belongs_to :deliverable
 end

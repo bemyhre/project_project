@@ -1,4 +1,5 @@
 class Project < ActiveRecord::Base
 
-	has_one :client
+	belongs_to :client
+	has_many :deliverables
 end

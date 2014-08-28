@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :clients
-  resources :projects
-  resources :deliverables
-  resources :issues
+  resources :clients do
+    resources :projects
+  end
+
 
   root 'clients#index'
 

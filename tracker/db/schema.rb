@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20140826155150) do
   end
 
   create_table "deliverables", force: true do |t|
+    t.integer  "project_id"
     t.string   "name"
     t.string   "description"
     t.datetime "created_at"
@@ -33,6 +34,7 @@ ActiveRecord::Schema.define(version: 20140826155150) do
   end
 
   create_table "issues", force: true do |t|
+    t.integer  "deliverable_id"
     t.string   "title"
     t.string   "body"
     t.string   "budgeted_time"
@@ -44,8 +46,11 @@ ActiveRecord::Schema.define(version: 20140826155150) do
   create_table "projects", force: true do |t|
     t.string   "name"
     t.string   "description"
+    t.integer  "client_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "projects", ["client_id"], name: "index_projects_on_client_id", using: :btree
 
 end

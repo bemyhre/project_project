@@ -1,0 +1,27 @@
+<h1>Add a new project for <%="#{@client.first_name} #{@client.last_name}"%></h1>
+
+
+<% if @project.errors.any? %>
+    <ul>
+    <% @project.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for [@client,@project] do |f| %>
+  <%= f.label :name, "Name:" %>
+  <%= f.text_field :name %><br />
+
+  <%= f.label :description, "Description:" %>
+  <%= f.text_field :description %><br />
+
+  <%= f.submit %>
+  
+<% end %>
+
+
+
+
+
