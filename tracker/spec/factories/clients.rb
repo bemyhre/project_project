@@ -7,4 +7,8 @@ FactoryGirl.define do
   	f.company_name { Faker::Company.name }
   	f.email { Faker::Internet.email }
   end
+
+  factory :invalid_client, parent: :client do |f|
+  	f.first_name nil
+  end
 end
