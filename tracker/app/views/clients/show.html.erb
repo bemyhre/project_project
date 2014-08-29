@@ -4,8 +4,10 @@
 <p><%=@client.email%></p>
 
 <%= link_to 'Back', clients_path %>
-<%= link_to 'Edit', edit_client_path(@client) %>
-<%= link_to 'New Project', new_client_project_path(@client) %>
+<%if current_user %>
+	<%= link_to 'Edit', edit_client_path(@client) %>
+	<%= link_to 'New Project', new_client_project_path(@client) %>
+<%end%>
 
 <h2>Projects</h2>
 
@@ -16,7 +18,9 @@
 				<td><%="#{project.name} "%></td>
 				<td><%="#{project.description} "%></td>
 				<td><%= link_to ' Project Details', client_project_path(@client,project)%></td>
-	    		<td><%= link_to ' Edit Project', edit_client_project_path(@client,project)%></td>
+				<%if current_user %>
+		    		<td><%= link_to ' Edit Project', edit_client_project_path(@client,project)%></td>
+	    		<%end%>
 
 			</tr>
 		</li>	

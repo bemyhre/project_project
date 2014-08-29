@@ -2,8 +2,9 @@
 
 <p><%=@issue.body%><p>
 
-
-<%= link_to ' Edit issue', edit_issue_path(@issue)%>
+<%if current_user %>
+	<%= link_to ' Edit issue', edit_issue_path(@issue)%>
+<%end%>
 <%= link_to ' Go Back', :back%>
 <%= link_to ' Go Home', root_path%>
 
