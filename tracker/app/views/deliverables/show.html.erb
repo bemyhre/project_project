@@ -1,0 +1,30 @@
+<h2><%="Deliverable: #{@deliverable.name}"%></h2>
+
+<p><%=@deliverable.description%><p>
+
+
+<%= link_to ' Edit deliverable', edit_deliverable_path(@deliverable)%>
+<%= link_to ' Go Back', :back%>
+<%= link_to ' Go Home', root_path%>
+<%= link_to ' Add Issue', new_deliverable_issue_path(@deliverable)%>
+
+
+<h2>Issues</h2>
+
+
+<ul>
+	<% @deliverable.issues.each do |issue| %>
+		<li>
+			<tr>
+				<td><%="#{issue.title} "%></td>
+				<td><%="#{issue.priority} "%></td>
+				<td><%="#{issue.budgeted_time} "%></td>
+				<td><%= link_to ' Issue Details', issue_path(issue)%></td>
+	    		<td><%= link_to ' Edit Issue', edit_issue_path(issue)%></td>
+
+
+
+			</tr>
+		</li>	
+	<%end%>
+</ul>

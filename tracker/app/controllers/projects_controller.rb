@@ -1,7 +1,4 @@
 class ProjectsController < ApplicationController
-  def index
-    @projects=Project.all 
-  end
   
   def new
   	@client=Client.find(params[:client_id])
@@ -20,9 +17,20 @@ class ProjectsController < ApplicationController
   end
   
   def edit
-  	puts "fuuuuuuuuuk"
   	@client=Client.find(params[:client_id])
   	@project=@client.projects.find(params[:id])
+  end
+
+  def update
+    @client = Client.find(params[:client_id])
+    @project=@client.projects.find(params[:id])
+    if @project.update(project_params)
+      flash[:notice] = 'project successfully edited!'
+      redirect_to client_project_path(@client,@project)
+    else
+      render "edit"
+    end
+
   end
 
   private

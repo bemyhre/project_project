@@ -1,0 +1,29 @@
+
+<h1>Add a new issue for <%=" #{@deliverable.name}"%></h1>
+
+
+<% if @issue.errors.any? %>
+    <ul>
+    <% @issue.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for [@deliverable,@issue] do |f| %>
+  <%= f.label :title, "Issue Title Name:" %>
+  <%= f.text_field :title %><br />
+
+  <%= f.label :body, "Body:" %>
+  <%= f.text_field :body %><br />
+  
+  <%= f.label :budgeted_time, "Budgeted time:" %>
+  <%= f.text_field :budgeted_time %><br />
+  
+  <%= f.label :priority, "Priority:" %>
+  <%= f.text_field :priority %><br />
+
+  <%= f.submit %>
+  
+<% end %>
