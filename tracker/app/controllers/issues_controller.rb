@@ -1,7 +1,12 @@
 class IssuesController < ApplicationController
 	def new
-		@deliverable=Deliverable.find(params[:deliverable_id])
-	  	@issue=Issue.new
+		if current_user
+			@deliverable=Deliverable.find(params[:deliverable_id])
+		  	@issue=Issue.new
+		else
+	      flash[:notice] = 'You must be logged in to do that!'
+	      redirect_to root_url
+	    end
 	end
 
 	def create
@@ -15,7 +20,12 @@ class IssuesController < ApplicationController
 	end
 
 	def edit
-	  	@issue=Issue.find(params[:id])
+		if current_user
+	  		@issue=Issue.find(params[:id])
+	  	else
+	      flash[:notice] = 'You must be logged in to do that!'
+	      redirect_to root_url
+	    end
 	end
 
 	def update

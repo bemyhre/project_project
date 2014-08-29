@@ -1,8 +1,12 @@
 class DeliverablesController < ApplicationController
 	def new
-		
-	  	@project=Project.find(params[:project_id])
-	  	@deliverable=Deliverable.new
+		if current_user
+		  	@project=Project.find(params[:project_id])
+		  	@deliverable=Deliverable.new
+	  	else
+	      flash[:notice] = 'You must be logged in to do that!'
+	      redirect_to root_url
+    	end
 	end
 
 	def create
@@ -17,8 +21,13 @@ class DeliverablesController < ApplicationController
 	end
 
 	def edit
+		if current_user
 	  	@deliverable=Deliverable.find(params[:id])
 	  	puts @deliverable.inspect
+		else
+	      flash[:notice] = 'You must be logged in to do that!'
+	      redirect_to root_url
+	    end
 	end
 
 	def update

@@ -5,7 +5,13 @@ class ClientsController < ApplicationController
   end
   
   def new
-  	@client=Client.new
+    if current_user
+  	  @client=Client.new
+    else
+      flash[:notice] = 'You must be logged in to do that!'
+      redirect_to root_url
+    end
+
   end
 
   def create
@@ -19,7 +25,12 @@ class ClientsController < ApplicationController
   end 
 
   def edit
-    @client = Client.find(params[:id])
+    if current_user
+      @client = Client.find(params[:id])
+    else
+      flash[:notice] = 'You must be logged in to do that!'
+      redirect_to root_url
+    end
   end
 
   def update

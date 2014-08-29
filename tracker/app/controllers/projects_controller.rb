@@ -1,8 +1,13 @@
 class ProjectsController < ApplicationController
   
   def new
-  	@client=Client.find(params[:client_id])
-  	@project=Project.new
+    if current_user
+    	@client=Client.find(params[:client_id])
+    	@project=Project.new
+    else
+      flash[:notice] = 'You must be logged in to do that!'
+      redirect_to root_url
+    end
   end
 
   def create
@@ -17,8 +22,13 @@ class ProjectsController < ApplicationController
   end
   
   def edit
-  	@client=Client.find(params[:client_id])
-  	@project=@client.projects.find(params[:id])
+    if current_user
+    	@client=Client.find(params[:client_id])
+    	@project=@client.projects.find(params[:id])
+    else
+      flash[:notice] = 'You must be logged in to do that!'
+      redirect_to root_url
+    end
   end
 
   def update

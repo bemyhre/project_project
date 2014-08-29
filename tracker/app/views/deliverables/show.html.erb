@@ -3,10 +3,12 @@
 <p><%=@deliverable.description%><p>
 
 
-<%= link_to ' Edit deliverable', edit_deliverable_path(@deliverable)%>
 <%= link_to ' Go Back', :back%>
 <%= link_to ' Go Home', root_path%>
-<%= link_to ' Add Issue', new_deliverable_issue_path(@deliverable)%>
+<%if current_user %>
+	<%= link_to ' Edit deliverable', edit_deliverable_path(@deliverable)%>
+	<%= link_to ' Add Issue', new_deliverable_issue_path(@deliverable)%>
+<%end%>
 
 
 <h2>Issues</h2>
@@ -20,7 +22,9 @@
 				<td><%="#{issue.priority} "%></td>
 				<td><%="#{issue.budgeted_time} "%></td>
 				<td><%= link_to ' Issue Details', issue_path(issue)%></td>
-	    		<td><%= link_to ' Edit Issue', edit_issue_path(issue)%></td>
+				<%if current_user %>
+		    		<td><%= link_to ' Edit Issue', edit_issue_path(issue)%></td>
+	    		<%end%>
 
 
 

@@ -1,5 +1,9 @@
 <h1>Hello Client World</h1>
-<h2><%= link_to 'Add Client', new_client_path(@client) %></h2>
+<%if current_user %>
+
+	<h2><%= link_to 'Add Client', new_client_path(@client) %></h2>
+
+<%end%>
 
  <% flash.each do |name,msg| %>
     <%= msg %></br>
@@ -12,9 +16,12 @@
 				<h3><td><%="#{client.first_name} #{client.last_name} "%></td></h3>
 				<td><%="#{client.email} "%></td>
 				<td><%="#{client.company_name} "%></td>
+				
 				<td><%= link_to ' Client Details & Projects', client_path(client) %></td>
-	    		<td><%= link_to ' Edit Client', edit_client_path(client) %></td>
+				<%if current_user %>
+		    		<td><%= link_to ' Edit Client', edit_client_path(client) %></td>
 
+		    	<%end%>
 			</tr>
 		</li>
 	<%end%>

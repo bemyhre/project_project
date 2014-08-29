@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   resources :clients, only: [:index, :new, :create, :show, :edit, :update] do
     resources :projects, only: [:new, :create, :show, :edit, :update]
   end
@@ -16,6 +17,15 @@ Rails.application.routes.draw do
       resources :issues, only: [:new, :create, :show, :edit, :update],shallow: true
     end
   end
+
+  get "sign_up" => "users#new", :as => "sign_up"
+
+  get "log_in" => "sessions#new", :as => "log_in"
+
+  get "log_out" => "sessions#destroy", :as => "log_out"
+  resources :sessions
+
+  resources :users
 
   root 'clients#index'
 
