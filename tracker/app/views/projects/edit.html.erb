@@ -1,1 +1,25 @@
 <h1>Edit Project</h1>
+
+<h1>Edit <%= "#{@project.name}"%></h1>
+
+<%= form_for :project, url: client_project_path(@client,@project), method: :patch do |f| %>
+
+	<% if @project.errors.any? %>
+	    <ul>
+	    <% @project.errors.full_messages.each do |msg| %>
+	      <li><%= msg %></li>
+	    <% end %>
+	    </ul>
+	  </div>
+	<% end %>
+	<%= f.label :name, "Name:" %>
+	<%= f.text_field :name %><br />
+
+	<%= f.label :description, "Description:" %>
+	<%= f.text_field :description %><br />
+
+
+	<%= f.submit %>	
+<% end %>
+ 
+<%= link_to 'Back', clients_path %>

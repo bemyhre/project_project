@@ -1,9 +1,21 @@
 Rails.application.routes.draw do
 
-  resources :clients do
-    resources :projects
+  resources :clients, only: [:index, :new, :create, :show, :edit, :update] do
+    resources :projects, only: [:new, :create, :show, :edit, :update]
   end
 
+
+  scope shallow_path: "proj" do
+    resources :projects, only: [:none] do
+      resources :deliverables, only: [:new, :create, :show, :edit, :update],shallow: true
+    end
+  end
+
+  scope shallow_path: "del" do
+    resources :deliverables, only: [:none] do
+      resources :issues, only: [:new, :create, :show, :edit, :update],shallow: true
+    end
+  end
 
   root 'clients#index'
 

@@ -1,0 +1,9 @@
+<h2><%="Issue: #{@issue.title}"%></h2>
+
+<p><%=@issue.body%><p>
+
+
+<%= link_to ' Edit issue', edit_issue_path(@issue)%>
+<%= link_to ' Go Back', :back%>
+<%= link_to ' Go Home', root_path%>
+

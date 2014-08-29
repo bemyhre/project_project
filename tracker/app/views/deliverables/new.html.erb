@@ -1,0 +1,24 @@
+
+
+<h1>Add a new deliverable for <%=" #{@project.name}"%></h1>
+
+
+<% if @deliverable.errors.any? %>
+    <ul>
+    <% @deliverable.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for [@project,@deliverable] do |f| %>
+  <%= f.label :name, "Name:" %>
+  <%= f.text_field :name %><br />
+
+  <%= f.label :description, "Description:" %>
+  <%= f.text_field :description %><br />
+
+  <%= f.submit %>
+  
+<% end %>
