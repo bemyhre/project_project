@@ -4,9 +4,34 @@ BODY
 ********************************************************/
 
 body {
-	background-image: url('background-1.png');
+	background-color: #D8CAA8;
+	color: #5C832F;
+	line-height: 1.5em;
+}
+
+a {
+	color: #284907;
+}
+
+a:hover {
+	color: #283106;
 }
 
 ul {
 	list-style: none;
+}
+
+h1{
+	color: #283106
+}
+
+/********************************************************
+HEADER NAV
+********************************************************/
+
+#user_nav {
+	background-color: #B0DC7B;
+	border-bottom: 3px solid #284907;
+	height: 3em;
+	text-align: right;
 }
